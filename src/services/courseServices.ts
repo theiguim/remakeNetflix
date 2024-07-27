@@ -6,10 +6,11 @@ export const courseService = {
             attributes: [
                 'id',
                 'name',
+                "synopsis",
                 ["thumbnail_url", "thumbnailUrl"]
             ],
             include: {
-                association: "Episodes",
+                association: "episodes",
                 attributes: [
                     "id",
                     "name",
@@ -23,5 +24,23 @@ export const courseService = {
             }
         })
         return courseWithEpisodes
+    },
+
+    getRandomFeaturedCourses: async ()=>{
+        const featuredCourses = await Course.findAll({
+            attributes: [
+                'id',
+                'name',
+                "synopsis",
+                ["thumbnail_url", "thumbnailUrl"]
+            ],
+
+            where: {
+                featured: true
+            }
+
+        })
+        const randomFeturedCourses = featuredCourses.sort(() => 0.5 - Math.random());
+        return randomFeturedCourses.slice(0,3)
     }
 }

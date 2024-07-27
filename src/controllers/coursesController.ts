@@ -2,6 +2,24 @@ import { Request, Response } from "express"
 import { courseService } from "../services/courseServices"
 
 export const coursesController = {
+
+     //GET /courses/featured
+
+     featured: async (req: Request, res: Response) => {
+    
+        try {
+            
+            const featuredCourses = await courseService.getRandomFeaturedCourses()
+            return res.json(featuredCourses)
+        } catch (err) {
+
+            if (err instanceof Error) {
+                return res.status(400).json({ message: err.message })
+            }
+
+        }
+    },
+
     //GET /course/:id
 
     show: async (req: Request, res: Response) => {
@@ -18,4 +36,6 @@ export const coursesController = {
 
         }
     }
+
+   
 }

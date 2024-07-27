@@ -1,5 +1,6 @@
 import { Request, Response } from "express"
 import { courseService } from "../services/courseServices"
+import { getPaginetionParams } from "../helpers/getPaginationParams"
 
 export const coursesController = {
 
@@ -35,6 +36,24 @@ export const coursesController = {
 
         }
     },
+
+    //GET  /courses/seatch?name
+    search: async (req: Request, res: Response) => {
+
+        const {name} = req.query
+        const [page, perPage] = getPaginetionParams(req.query)
+        try {
+            if(typeof name !== "string") throw new Error ("name param must be of type string")
+            const courses = await courseService.findByName(name, page, perPage)
+            return res.json(courses)
+        } catch (err) {
+
+            if (err instanceof Error) {
+                return res.status(400).json({ message: err.message })
+            }
+        }
+    },
+
 
     //GET /course/:id
 

@@ -20,6 +20,22 @@ export const coursesController = {
         }
     },
 
+    //GET /courses/newest
+
+    newest: async (req: Request, res: Response) => {
+    
+        try {
+            const newestCourses = await courseService.getTopTenNewset()
+            res.json((newestCourses))
+        } catch (err) {
+
+            if (err instanceof Error) {
+                return res.status(400).json({ message: err.message })
+            }
+
+        }
+    },
+
     //GET /course/:id
 
     show: async (req: Request, res: Response) => {

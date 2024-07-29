@@ -8,6 +8,8 @@ const app = express();
 
 app.use(express.static(path.join("public")));
 
+app.use(express.json());
+
 app.use(adminJs.options.rootPath, adminJsRouter);
 
 app.use(router);

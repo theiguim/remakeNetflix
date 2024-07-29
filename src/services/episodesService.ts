@@ -4,7 +4,7 @@ import fs from "fs"
 
 
 export const episodeService = {
-    streamEpisodeToResponse: (req: Response, videoUrl: string, range:string | undefined)=>{
+    streamEpisodeToResponse: (res: Response, videoUrl: string, range:string | undefined)=>{
 
 
         const filePath = path.join(__dirname, "..", "..", "uploads", videoUrl);

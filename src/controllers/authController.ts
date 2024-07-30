@@ -64,8 +64,4 @@ export const authController = {
             }
         }
     }
-
-
-
-
 }

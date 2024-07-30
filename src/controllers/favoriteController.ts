@@ -32,5 +32,23 @@ export const favoritesController = {
                 return res.status(400).json({ message: err.message })
             }
         }
+    },
+
+    //DELETE /favorites/:id
+
+     // DELETE /favorites/:id
+  delete: async (req: AuthenticatedRequest, res: Response) => {
+    const userId = req.user!.id
+    const courseId = req.params.id //alterar para body.. postman não tem pathVariables
+
+    try {
+      await favoriteService.delete(userId, Number(courseId))
+      return res.status(204).send()
+    } catch (err) {
+      if (err instanceof Error) {
+        return res.status(400).json({ message: err.message })
+      }
+        }
     }
+    
 }

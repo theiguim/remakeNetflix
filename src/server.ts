@@ -3,8 +3,11 @@ import {sequelize} from "./database"
 import { adminJs, adminJsRouter } from "./adminjs";
 import path from "path"
 import {router} from "./routers"
+import cors from "cors"
 
 const app = express();
+
+app.use(cors());
 
 app.use(express.static(path.join("public")));
 

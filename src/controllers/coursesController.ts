@@ -86,7 +86,7 @@ export const coursesController = {
 
             const favorited = await favoriteService.isFavorited(userId, Number(courseId))
 
-            return res.json({ ...course.get(), liked })
+            return res.json({ ...course.get(), liked, favorited })
         } catch (err) {
 
             if (err instanceof Error) {

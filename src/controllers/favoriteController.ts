@@ -18,7 +18,6 @@ export const favoritesController = {
         }
     },
 
-
     // POST /favorites
     save: async (req: AuthenticatedRequest, res: Response) => {
         const userId = req.user!.id
@@ -39,7 +38,7 @@ export const favoritesController = {
      // DELETE /favorites/:id
   delete: async (req: AuthenticatedRequest, res: Response) => {
     const userId = req.user!.id
-    const courseId = req.params.id //alterar para body.. postman não tem pathVariables
+    const courseId = req.params.id 
 
     try {
       await favoriteService.delete(userId, Number(courseId))

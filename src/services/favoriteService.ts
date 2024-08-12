@@ -39,7 +39,9 @@ export const favoriteService = {
         userId,
         courseId
       }
+      
     })
+   
   },
 
   isFavorited: async (userId: number, courseId: number) => {

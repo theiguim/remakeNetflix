@@ -1,0 +1,1 @@
+Projeto desenvolvido para estudo simulando o backend de uma plataforma stream. Foi integrado o painel Adminjs, enquanto toda estruutra da API foi contruida com typescript utilizando SQL com Sequelize ORM.
